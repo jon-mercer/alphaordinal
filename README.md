@@ -19,3 +19,21 @@ Here's an example of the numbers 0-9 sorted in alphaordinal order.
 
 ## What practical uses does this thing have?
 None
+
+## How do I use it anyway?
+You can utilize `AlphaOrdinalComparator` which implements `Comparator<Integer>`.  For example, this is an excerpt from the unit tests of this project (it's in groovy, but is easily mappable to Java)
+
+```groovy
+def "AlphaOrderinalComparator should sort the numbers 0-9"() {
+
+        given:
+        def numbers = new ArrayList<Integer>()
+        numbers.addAll([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
+
+        when:
+        Collections.sort(numbers, new AlphaOrdinalComparator())
+
+        then:
+        numbers == [8, 5, 4, 9, 1, 7, 6, 3, 2, 0]
+    }
+```
