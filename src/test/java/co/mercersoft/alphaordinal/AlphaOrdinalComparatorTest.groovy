@@ -19,6 +19,39 @@ class AlphaOrdinalComparatorTest extends Specification {
         1      | 8
         0      | 5
         200    | 500
+        8      | null
+    }
+
+    @Unroll
+    def "AlphaOrdinalComparator should return #o1 less than #o2"(){
+        given:
+        def comparator = new AlphaOrdinalComparator()
+
+        expect:
+        comparator.compare(o1, o2) < 0
+
+        where:
+        o1     | o2
+        1010   | 2
+        8      | 1
+        5      | 0
+        500    | 200
+        null   | 8
+    }
+
+    @Unroll
+    def "AlphaOrdinalComparator should return #o1 equal to #o2"(){
+        given:
+        def comparator = new AlphaOrdinalComparator()
+
+        expect:
+        comparator.compare(o1, o2) == 0
+
+        where:
+        o1     | o2
+        1      | 1
+        123456 | 123456
+        null   | null
     }
 
     def "AlphaOrderinalComparator should sort the numbers 0-9"() {
