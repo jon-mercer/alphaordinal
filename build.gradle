@@ -1,6 +1,14 @@
+repositories {
+    mavenCentral()
+}
+
 apply plugin: 'java'
 apply plugin: 'idea'
+apply plugin: 'groovy'
 
 dependencies {
-  
+
+    testCompile 'org.hamcrest:hamcrest-all:1.3'
+    testCompile 'junit:junit:4.12'
+    testCompile 'org.spockframework:spock-core:1.0-groovy-2.4'
 }
